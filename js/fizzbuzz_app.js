@@ -36,10 +36,22 @@
     }
   });
 
+  var AnswersView = Backbone.View.extend({
+    tagName: 'p',
+    template: _.template($('#answers-template').html()),
+    render: function () {
+      var template = this.template();
+      this.$el.html(template);
+      return this;
+    }
+  });
+
   var GameView = Backbone.View.extend({
     el: $('#game'),
     initialize: function(){
       this.model.on('change', this.showNum, this);
+      var answersView = new AnswersView();
+      this.$el.children('#answers').html(answersView.render().el);
     },
     events: {
       "click #fizz": "checkFizzBuzz",
