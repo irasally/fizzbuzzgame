@@ -37,6 +37,24 @@
     }
   });
 
+  var Timer = Backbone.Model.extend({
+    defaults: function() {
+      return {
+        time: 100,
+        rest: 100
+      };
+    }
+  });
+  var TimerView = Backbone.View.extend({
+    tagName: 'p',
+    template: _.template($('#timer-template').html()),
+    render: function(){
+      var template = this.template(this.model.toJSON());
+      this.$el.html(template);
+      return this;
+    }
+  });
+
   var AnswersView = Backbone.View.extend({
     tagName: 'p',
     template: _.template($('#answers-template').html()),
@@ -87,6 +105,11 @@
       this.$el.html(template);
       var ansersView = new AnswersView();
       this.$el.children('#controls').html(ansersView.render().el);
+
+      var timer = new Timer();
+      var timerView = new TimerView({model: timer});
+      this.$el.children('#timer').html(timerView.render().el);
+
       return this;
     }
   });
