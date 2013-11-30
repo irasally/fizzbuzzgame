@@ -1,12 +1,21 @@
 (function(){
-  var Game = Backbone.Model.extend({
+  var FizzBuzzGame = Backbone.Model.extend({
     defaults: function() {
       return {
         number: this.getRandom()
       };
     },
     getRandom: function(){
-      return 5; // rand
+      return 1 + parseInt(100 * Math.random()); // rand
+    },
+    getFizzBuzzType: function () {
+      var number = this.get('number'); // or "buzz" or "fizzbuzz" or "others"
+      var isFizz = (number % 3) === 0;
+      var isBuzz = (number % 5) === 0;
+      if (isFizz && isBuzz) return 'fizzbuzz';
+      if (isFizz) return 'fizz';
+      if (isBuzz) return 'buzz';
+      return 'others'
     }
   });
 
@@ -42,7 +51,7 @@
     }
   });
 
-  var game = new Game();
+  var game = new FizzBuzzGame();
   console.log(game.get('number'));
   var gameView = new GameView({model: game});
 })();
