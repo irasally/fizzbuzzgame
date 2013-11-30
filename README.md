@@ -8,6 +8,7 @@ https://github.com/sapporojs/jsdojo-201311/wiki/thema2
 
 このアプリで学んでおきたい事
 
-* Backbons.jsを使ってみる
+* Backbone.jsを使ってみる
 https://github.com/jashkenas/backbone
 * クライアントMVCっぽい動きにしてみたい
+* 何か新しいことをやってみたい
