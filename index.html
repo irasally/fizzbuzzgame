@@ -11,7 +11,7 @@
       #number {
         font-size: 150pt;
       }
-      #result {
+      #message {
         font-size: 20pt;
         color:red;
       }
@@ -28,6 +28,7 @@
       <h2>FizzBuzzGame</h2>
       <div id="game">
         <div id="number">13</div>
+        <p id="result"></p>
         <input type="button" class="answer" id="fizz" value="fizz"/>
         <input type="button" class="answer" id="buzz" value="buzz"/>
         <input type="button" class="answer" id="fizzbuzz" value="fizzbuzz"/>
@@ -35,7 +36,7 @@
       </div>
     </div>
     <script type="text/template" id="result-template">
-      <span id="result"><%- message %></span>
+      <span id="message"><%- message %></span>
       <input type="button" id="regenerate" value="again"/>
     </script>
     <script src="js/vendor/underscore.js"></script>

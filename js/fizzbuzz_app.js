@@ -32,7 +32,6 @@
     render: function(){
       var template = this.template(this.model.toJSON());
       this.$el.html(template);
-      console.log(this.$el);
       return this;
     }
   });
@@ -59,7 +58,7 @@
       var result = new Result({message: message});
       console.log(message);
       var resultView = new ResultView({model: result});
-      this.$el.append(resultView.render().el);
+      this.$el.children('#result').html(resultView.render().el);
     },
     regenerate: function() {
       this.model.regenerate();
