@@ -2,7 +2,8 @@
   var FizzBuzzGame = Backbone.Model.extend({
     defaults: function() {
       return {
-        number: this.getRandom()
+        number: this.getRandom(),
+        consecutiveCorrectAnswers: 0 
       };
     },
     getRandom: function(){
@@ -55,11 +56,18 @@
       var type = e.target.id;
       var num = this.model.get('number');
       var answer = this.model.getFizzBuzzType();
-      var message = (type == answer) ? '正解' : 'ブッ、ブー！！！';
+      var message;
+      if(type == answer) {
+        message = '正解';
+        this.model.set('consecutiveCorrectAnswers', this.model.get('consecutiveCorrectAnswers') + 1 );
+      } else {
+        message = 'ブッ、ブー！！！';
+        this.model.set('consecutiveCorrectAnswers', 0);
+      }
       var result = new Result({message: message});
-      console.log(message);
       var resultView = new ResultView({model: result});
       this.$el.children('#result').html(resultView.render().el);
+      console.log(this.model.get('consecutiveCorrectAnswers'));
     },
     regenerate: function() {
       this.model.regenerate();
