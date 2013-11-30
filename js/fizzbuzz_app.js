@@ -60,6 +60,9 @@
       console.log(message);
       var resultView = new ResultView({model: result});
       this.$el.append(resultView.render().el);
+    },
+    regenerate: function() {
+      this.model.regenerate();
     }
   });
 
