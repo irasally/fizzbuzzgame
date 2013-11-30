@@ -22,7 +22,7 @@
   var GameView = Backbone.View.extend({
     el: $('#game'),
     initialize: function(){
-      this.showNum();
+      this.model.on('change', this.showNum, this);
     },
     events: {
       "click #fizz" : "isFizz",
@@ -52,6 +52,5 @@
   });
 
   var game = new FizzBuzzGame();
-  console.log(game.get('number'));
   var gameView = new GameView({model: game});
 })();

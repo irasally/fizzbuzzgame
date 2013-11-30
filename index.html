@@ -4,25 +4,38 @@
     <meta charset="utf-8"/>
     <title>FizzBuzz game</title>
     <style>
-      #number {
-        font-size: 180pt;
+      #contents {
         width: 100%;
         text-align:center;
       }
-      .answer {
+      #number {
+        font-size: 150pt;
+      }
+      #result {
+        font-size: 20pt;
+        color:red;
+      }
+      #regenerate {
         width: 100px;
-        font-size: 40pt;
+      }
+      .answer {
+        width: 120px;
       }
     </style>
   </head>
   <body>
     <h2>FizzBuzzGame</h2>
     <div id="game">
-      <div id="number">13</div>
-      <input type="button" class="answer" id="fizz" value="fizz"/>
-      <input type="button" class="answer" id="buzz" value="buzz"/>
-      <input type="button" class="answer" id="fizzbuzz" value="fizzbuzz"/>
-      <input type="button" class="answer" id="others" value="others"/>
+      <div id="contents">
+        <div id="number">13</div>
+        <p id="result">あたりです!!!
+          <input type="button" id="regenerate" value="again"/>
+        </p>
+        <input type="button" class="answer" id="fizz" value="fizz"/>
+        <input type="button" class="answer" id="buzz" value="buzz"/>
+        <input type="button" class="answer" id="fizzbuzz" value="fizzbuzz"/>
+        <input type="button" class="answer" id="others" value="others"/>
+      </div>
     </div>
     <script src="js/vendor/underscore.js"></script>
     <script src="js/vendor/jquery.js"></script>
