@@ -16,6 +16,9 @@
       if (isFizz) return 'fizz';
       if (isBuzz) return 'buzz';
       return 'others'
+    },
+    regenerate: function () {
+      this.set('number', this.getRandom());
     }
   });
 
