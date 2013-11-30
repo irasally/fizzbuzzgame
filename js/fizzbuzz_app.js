@@ -12,11 +12,17 @@
 
   var GameView = Backbone.View.extend({
     el: $('#game'),
+    initialize: function(){
+      this.showNum();
+    },
     events: {
       "click #fizz" : "isFizz",
       "click #buzz" : "isBuzz",
       "click #fizzbuzz" : "isFizzbuzz",
       "click #others" : "isOthers"
+    },
+    showNum: function(){
+      $('#number').html(this.model.get('number'));
     },
     isFizz: function(){
       var num = this.model.get('number');
