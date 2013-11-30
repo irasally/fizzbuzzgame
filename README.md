@@ -14,3 +14,8 @@ https://github.com/jashkenas/backbone
 * クライアント側JavaScript における MVC 的な実装を経験してみる
 * チームでの開発の経験
 * 何か新しいことをやってみたい（by freru）
+
+公開先
+------
+http://jsdojo-nov-2013-team-g.azurewebsites.net/  
+回答時に音が鳴りますのでボリュームにご注意ください。
