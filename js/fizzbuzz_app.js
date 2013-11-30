@@ -87,10 +87,19 @@
     regenerate: function() {
       this.model.regenerate();
       this.showAnswers();
+    },
+    template: _.template($('#game-template').html()),
+    render: function () {
+      var template = this.template(this.model.toJSON());
+      this.$el.append(template);
+      var ansersView = new AnswersView();
+      this.$el.children('#controls').html(ansersView.render().el);
+      return this;
     }
   });
 
   var game = new FizzBuzzGame();
   var gameView = new GameView({model: game});
   game.regenerate();
+  gameView.render();
 })();
