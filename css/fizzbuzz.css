@@ -3,7 +3,15 @@
 	text-align:center;
 }
 #number {
-	font-size: 150pt;
+    font-size: 150pt;
+    border: solid 8px #888;
+    width: 300px;
+    height: 300px;
+    line-height: 300px;
+    display: inline-block;
+    border-radius: 200px;
+    -webkit-text-shadow: 4px 4px 2px #ccc;
+    text-shadow: 4px 4px 2px #ccc;
 }
 #message {
 	font-size: 20pt;
@@ -12,6 +20,22 @@
 #regenerate {
 	width: 100px;
 }
-.answer {
-	width: 120px;
+#controls {
+    height:50pt;
+}
+.answer,
+#regenerate {
+	width: 5em;
+    border:none;
+    font-size:25pt;
+    border-radius: 4px;
+    background-color:#0094ff;
+    color:white;
+    height:2em;
+}
+#regenerate {
+    background-color:#08a910;
+}
+#answerCount {
+    font-size:20pt;
 }
