@@ -15,10 +15,25 @@
       if (isFizz && isBuzz) return 'fizzbuzz';
       if (isFizz) return 'fizz';
       if (isBuzz) return 'buzz';
-      return 'others'
+      return 'others';
     },
     regenerate: function () {
       this.set('number', this.getRandom());
+    }
+  });
+  var Result = Backbone.Model.extend({
+    defaults: {
+      message: 'hello'
+    }
+  });
+  var ResultView = Backbone.View.extend({
+    tagName: 'p',
+    template: _.template($('#result-template').html()),
+    render: function(){
+      var template = this.template(this.model.toJSON());
+      this.$el.html(template);
+      console.log(this.$el);
+      return this;
     }
   });
 
@@ -36,7 +51,7 @@
     showNum: function(){
       $('#number').html(this.model.get('number'));
     },
-    isFizz: function(){
+    isFizz: function(e){
       this.checkFizzBuzz('fizz');
     },
     isBuzz: function(){
@@ -51,20 +66,12 @@
     checkFizzBuzz: function(type){
       var num = this.model.get('number');
       var answer = this.model.getFizzBuzzType();
-      if (type == answer) {
-        alert('正解！');
-      } else {
-        alert('ブッ、ブー！！！');
-      }
+      var message = (type == answer) ? '正解' : 'ブッ、ブー！！！';
+      var result = new Result({message: message});
+      console.log(message);
+      var resultView = new ResultView({model: result});
+      this.$el.append(resultView.render().el);
     }
-  });
-  var ResultView = Backbone.View.extend({
-/*         <p id="result">あたりです!!!
-          <input type="button" id="regenerate" value="again"/>
-        </p>
-           <input type="button" id="regenerate" value="again"/>
-*/
-    tagName: 'p'
   });
 
   var game = new FizzBuzzGame();
