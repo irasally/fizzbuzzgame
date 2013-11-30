@@ -45,7 +45,8 @@
       "click #fizz": "checkFizzBuzz",
       "click #buzz": "checkFizzBuzz",
       "click #fizzbuzz": "checkFizzBuzz",
-      "click #others": "checkFizzBuzz"
+      "click #others": "checkFizzBuzz",
+      "click #regenerate": "regenerate"
     },
     showNum: function(){
       $('#number').html(this.model.get('number'));
