@@ -53,7 +53,16 @@
       alert("Othersを押しました。現在の数字は" + num + "です。");
     }
   });
+  var ResultView = Backbone.View.extend({
+/*         <p id="result">あたりです!!!
+          <input type="button" id="regenerate" value="again"/>
+        </p>
+           <input type="button" id="regenerate" value="again"/>
+*/
+    tagName: 'p'
+  });
 
   var game = new FizzBuzzGame();
   var gameView = new GameView({model: game});
+  game.regenerate();
 })();
