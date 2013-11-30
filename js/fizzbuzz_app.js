@@ -46,7 +46,8 @@
       "click #fizz" : "isFizz",
       "click #buzz" : "isBuzz",
       "click #fizzbuzz" : "isFizzbuzz",
-      "click #others" : "isOthers"
+      "click #others" : "isOthers",
+      "click #regenerate" : "regenerate"
     },
     showNum: function(){
       $('#number').html(this.model.get('number'));
@@ -71,6 +72,9 @@
       console.log(message);
       var resultView = new ResultView({model: result});
       this.$el.append(resultView.render().el);
+    },
+    regenerate: function() {
+      this.model.regenerate();
     }
   });
 
