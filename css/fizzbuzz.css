@@ -24,6 +24,7 @@
     height:50pt;
 }
 .answer,
+
 #regenerate {
 	width: 5em;
     border:none;
@@ -38,4 +39,26 @@
 }
 #answerCount {
     font-size:20pt;
+}
+#timer-gauge {
+	padding: 0;
+	border: solid 1px #cccccc;
+	/*width: 200px;*/
+	height: 10px;
+}
+#timer-time {
+	margin: 0;
+	padding: 0;
+	background-color: red;
+	height: 10px;
+	/*width: 50%;*/
+	display: inline-block;
+}
+#timer-rest {
+	margin: 0;
+	padding: 0;
+	background-color: green;
+	height: 10px;
+	/*width: 50%;*/
+	display: inline-block;
 }
