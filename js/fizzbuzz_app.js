@@ -53,10 +53,7 @@
       this.showAnswers();
     },
     events: {
-      "click #fizz": "checkFizzBuzz",
-      "click #buzz": "checkFizzBuzz",
-      "click #fizzbuzz": "checkFizzBuzz",
-      "click #others": "checkFizzBuzz",
+      "click .answer": "checkFizzBuzz",
       "click #regenerate": "regenerate"
     },
     showNum: function(){
