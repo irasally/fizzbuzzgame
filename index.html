@@ -9,6 +9,7 @@
     <div id="contents">
       <h2>FizzBuzzGame</h2>
       <div id="game">
+        <p id="timer"></p>
         <div id="number">13</div>
         <p id="controls"></p>
       </div>
@@ -16,6 +17,12 @@
     <script type="text/template" id="result-template">
       <span id="message"><%- message %></span>
       <input type="button" id="regenerate" value="again"/>
+    </script>
+    <script type="text/template" id="timer-template">
+      <div id="timer-gauge">
+        <span style="width:<%- time %>px" id="timer-time"></span>
+        <span style="width:<%- rest %>px" id="timer-rest"></span>
+      </div>
     </script>
     <script type="text/template" id="answers-template">
       <input type="button" class="answer" id="fizz" value="fizz" />
