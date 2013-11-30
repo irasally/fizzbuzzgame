@@ -47,11 +47,16 @@
     }
   });
 
+  var AnswerCountView = Backbone.View.extend({
+    el: '#answerCount',
+    initialize: function(){
+      this.model.on('change', this.render, this);
+    }
+  });
   var GameView = Backbone.View.extend({
     el: $('#game'),
     initialize: function(){
-      this.model.on('change', this.showNum, this);
-      this.showAnswers();
+      this.model.on('change', this.render, this);
     },
     events: {
       "click #fizz": "checkFizzBuzz",
@@ -59,13 +64,6 @@
       "click #fizzbuzz": "checkFizzBuzz",
       "click #others": "checkFizzBuzz",
       "click #regenerate": "regenerate"
-    },
-    showNum: function(){
-      $('#number').html(this.model.get('number'));
-    },
-    showAnswers:function () { 
-      var answersView = new AnswersView();
-      this.$el.children('#controls').html(answersView.render().el);
     },
     checkFizzBuzz: function (e) {
       var type = e.target.id;
@@ -81,17 +79,15 @@
       }
       var result = new Result({message: message});
       var resultView = new ResultView({model: result});
-      console.log(this.model.get('consecutiveCorrectAnswers'));
       this.$el.children('#controls').html(resultView.render().el);
     },
     regenerate: function() {
       this.model.regenerate();
-      this.showAnswers();
     },
     template: _.template($('#game-template').html()),
     render: function () {
       var template = this.template(this.model.toJSON());
-      this.$el.append(template);
+      this.$el.html(template);
       var ansersView = new AnswersView();
       this.$el.children('#controls').html(ansersView.render().el);
       return this;
@@ -101,5 +97,4 @@
   var game = new FizzBuzzGame();
   var gameView = new GameView({model: game});
   game.regenerate();
-  gameView.render();
 })();
