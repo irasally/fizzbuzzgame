@@ -59,10 +59,7 @@
       this.model.on('change', this.render, this);
     },
     events: {
-      "click #fizz": "checkFizzBuzz",
-      "click #buzz": "checkFizzBuzz",
-      "click #fizzbuzz": "checkFizzBuzz",
-      "click #others": "checkFizzBuzz",
+      "click .answer": "checkFizzBuzz",
       "click #regenerate": "regenerate"
     },
     checkFizzBuzz: function (e) {
@@ -74,7 +71,7 @@
         message = '正解';
         this.model.set('consecutiveCorrectAnswers', this.model.get('consecutiveCorrectAnswers') + 1 );
       } else {
-        message = 'ブッ、ブー！！！';
+        message = 'ブッ、ブー！！！正解は ' + answer + ' です。';
         this.model.set('consecutiveCorrectAnswers', 0);
       }
       var result = new Result({message: message});
