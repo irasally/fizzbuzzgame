@@ -6,10 +6,16 @@
       };
     },
     getRandom: function(){
-      return 5; // rand
+      return 1 + parseInt(100 * Math.random()); // rand
     },
     getFizzBuzzType: function () {
-        return "fizz"; // or "buzz" or "fizzbuzz" or "others"
+      var number = this.get('number'); // or "buzz" or "fizzbuzz" or "others"
+      var isFizz = (number % 3) === 0;
+      var isBuzz = (number % 5) === 0;
+      if (isFizz && isBuzz) return 'fizzbuzz';
+      if (isFizz) return 'fizz';
+      if (isBuzz) return 'buzz';
+      return 'others'
     }
   });
 
