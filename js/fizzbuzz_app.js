@@ -43,27 +43,16 @@
       this.model.on('change', this.showNum, this);
     },
     events: {
-      "click #fizz" : "isFizz",
-      "click #buzz" : "isBuzz",
-      "click #fizzbuzz" : "isFizzbuzz",
-      "click #others" : "isOthers"
+      "click #fizz": "checkFizzBuzz",
+      "click #buzz": "checkFizzBuzz",
+      "click #fizzbuzz": "checkFizzBuzz",
+      "click #others": "checkFizzBuzz"
     },
     showNum: function(){
       $('#number').html(this.model.get('number'));
     },
-    isFizz: function(e){
-      this.checkFizzBuzz('fizz');
-    },
-    isBuzz: function(){
-      this.checkFizzBuzz('buzz');
-    },
-    isFizzbuzz: function(){
-      this.checkFizzBuzz('fizzbuzz');
-    },
-    isOthers: function(){
-      this.checkFizzBuzz('others');
-    },
-    checkFizzBuzz: function(type){
+    checkFizzBuzz: function (e) {
+      var type = e.target.id;
       var num = this.model.get('number');
       var answer = this.model.getFizzBuzzType();
       var message = (type == answer) ? '正解' : 'ブッ、ブー！！！';
