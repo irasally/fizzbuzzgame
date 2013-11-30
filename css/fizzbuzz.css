@@ -1,0 +1,17 @@
+#contents {
+	width: 100%;
+	text-align:center;
+}
+#number {
+	font-size: 150pt;
+}
+#message {
+	font-size: 20pt;
+	color:red;
+}
+#regenerate {
+	width: 100px;
+}
+.answer {
+	width: 120px;
+}
