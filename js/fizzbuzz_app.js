@@ -36,10 +36,21 @@
     }
   });
 
+  var AnswersView = Backbone.View.extend({
+    tagName: 'p',
+    template: _.template($('#answers-template').html()),
+    render: function () {
+      var template = this.template();
+      this.$el.html(template);
+      return this;
+    }
+  });
+
   var GameView = Backbone.View.extend({
     el: $('#game'),
     initialize: function(){
       this.model.on('change', this.showNum, this);
+      this.showAnswers();
     },
     events: {
       "click #fizz": "checkFizzBuzz",
@@ -51,6 +62,10 @@
     showNum: function(){
       $('#number').html(this.model.get('number'));
     },
+    showAnswers:function () { 
+      var answersView = new AnswersView();
+      this.$el.children('#controls').html(answersView.render().el);
+    },
     checkFizzBuzz: function (e) {
       var type = e.target.id;
       var num = this.model.get('number');
@@ -59,10 +74,11 @@
       var result = new Result({message: message});
       console.log(message);
       var resultView = new ResultView({model: result});
-      this.$el.children('#result').html(resultView.render().el);
+      this.$el.children('#controls').html(resultView.render().el);
     },
     regenerate: function() {
       this.model.regenerate();
+      this.showAnswers();
     }
   });
 
