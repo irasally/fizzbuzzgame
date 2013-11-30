@@ -1,5 +1,5 @@
 (function(){
-  var Game = Backbone.Model.extend({
+  var FizzBuzzGame = Backbone.Model.extend({
     defaults: function() {
       return {
         number: this.getRandom()
@@ -7,6 +7,9 @@
     },
     getRandom: function(){
       return 5; // rand
+    },
+    getFizzBuzzType: function () {
+        return "fizz"; // or "buzz" or "fizzbuzz" or "others"
     }
   });
 
@@ -21,7 +24,7 @@
     }
   });
 
-  var game = new Game();
+  var game = new FizzBuzzGame();
   console.log(game.get('number'));
   var gameView = new GameView({model: game});
 })();
