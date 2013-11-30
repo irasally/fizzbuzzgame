@@ -3,6 +3,7 @@
     defaults: function() {
       return {
         number: this.getRandom(),
+        start: +new Date(),
         consecutiveCorrectAnswers: 0 
       };
     },
@@ -20,6 +21,10 @@
     },
     regenerate: function () {
       this.set('number', this.getRandom());
+      this.set('start', +new Date());
+    },
+    responseTime: function () {
+      return new Date() - this.get('start');
     }
   });
   var Result = Backbone.Model.extend({
@@ -86,7 +91,7 @@
       var answer = this.model.getFizzBuzzType();
       var message;
       if(type == answer) {
-        message = '正解';
+        message = '正解（応答時間：' + this.model.responseTime()/1000 + '秒）';
         this.model.set('consecutiveCorrectAnswers', this.model.get('consecutiveCorrectAnswers') + 1 );
         new Audio("sound/OK.wav").play();
       } else {
