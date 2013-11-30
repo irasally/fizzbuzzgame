@@ -11,4 +11,6 @@ https://github.com/sapporojs/jsdojo-201311/wiki/thema2
 * Backbone.jsを使ってみる
 https://github.com/jashkenas/backbone
 * クライアントMVCっぽい動きにしてみたい
-* 何か新しいことをやってみたい
+* クライアント側JavaScript における MVC 的な実装を経験してみる
+* チームでの開発の経験
+* 何か新しいことをやってみたい（by freru）
