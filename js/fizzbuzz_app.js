@@ -2,7 +2,8 @@
   var FizzBuzzGame = Backbone.Model.extend({
     defaults: function() {
       return {
-        number: this.getRandom()
+        number: this.getRandom(),
+        consecutiveCorrectAnswers: 0 
       };
     },
     getRandom: function(){
@@ -64,40 +65,52 @@
     }
   });
 
+  var AnswerCountView = Backbone.View.extend({
+    el: '#answerCount',
+    initialize: function(){
+      this.model.on('change', this.render, this);
+    }
+  });
   var GameView = Backbone.View.extend({
     el: $('#game'),
     initialize: function(){
-      this.model.on('change', this.showNum, this);
-      this.showAnswers();
-
-      var timer = new Timer();
-      var timerView = new TimerView({model: timer});
-      this.$el.children('#timer').html(timerView.render().el);
+      this.model.on('change', this.render, this);
     },
     events: {
       "click .answer": "checkFizzBuzz",
       "click #regenerate": "regenerate"
     },
-    showNum: function(){
-      $('#number').html(this.model.get('number'));
-    },
-    showAnswers:function () { 
-      var answersView = new AnswersView();
-      this.$el.children('#controls').html(answersView.render().el);
-    },
     checkFizzBuzz: function (e) {
       var type = e.target.id;
       var num = this.model.get('number');
       var answer = this.model.getFizzBuzzType();
-      var message = (type == answer) ? '正解' : 'ブッ、ブー！！！正解は ' + answer + ' です。';
+      var message;
+      if(type == answer) {
+        message = '正解';
+        this.model.set('consecutiveCorrectAnswers', this.model.get('consecutiveCorrectAnswers') + 1 );
+      } else {
+        message = 'ブッ、ブー！！！正解は ' + answer + ' です。';
+        this.model.set('consecutiveCorrectAnswers', 0);
+      }
       var result = new Result({message: message});
-      console.log(message);
       var resultView = new ResultView({model: result});
       this.$el.children('#controls').html(resultView.render().el);
     },
     regenerate: function() {
       this.model.regenerate();
-      this.showAnswers();
+    },
+    template: _.template($('#game-template').html()),
+    render: function () {
+      var template = this.template(this.model.toJSON());
+      this.$el.html(template);
+      var ansersView = new AnswersView();
+      this.$el.children('#controls').html(ansersView.render().el);
+
+      var timer = new Timer();
+      var timerView = new TimerView({model: timer});
+      this.$el.children('#timer').html(timerView.render().el);
+
+      return this;
     }
   });
 

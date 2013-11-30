@@ -9,11 +9,14 @@
     <div id="contents">
       <h2>FizzBuzzGame</h2>
       <div id="game">
-        <p id="timer"></p>
-        <div id="number">13</div>
-        <p id="controls"></p>
       </div>
     </div>
+    <script type="text/template" id="game-template">
+      <p id="timer"></p>
+      <div id="number"><%- number %></div>
+      <p id="controls"></p>
+      <div id="answerCount">連続<%- consecutiveCorrectAnswers %>問正解中</div>
+    </script>
     <script type="text/template" id="result-template">
       <span id="message"><%- message %></span>
       <input type="button" id="regenerate" value="again"/>
