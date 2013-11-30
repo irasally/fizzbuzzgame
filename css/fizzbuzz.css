@@ -43,22 +43,22 @@
 #timer-gauge {
 	padding: 0;
 	border: solid 1px #cccccc;
-	/*width: 200px;*/
 	height: 10px;
+	text-align: center;
 }
 #timer-time {
+	float: left;
 	margin: 0;
 	padding: 0;
 	background-color: red;
 	height: 10px;
-	/*width: 50%;*/
 	display: inline-block;
 }
 #timer-rest {
+	float: left;
 	margin: 0;
 	padding: 0;
 	background-color: green;
 	height: 10px;
-	/*width: 50%;*/
 	display: inline-block;
 }

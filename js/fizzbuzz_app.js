@@ -40,8 +40,8 @@
   var Timer = Backbone.Model.extend({
     defaults: function() {
       return {
-        time: 100,
-        rest: 100
+        time: 50,
+        rest: 50
       };
     }
   });
