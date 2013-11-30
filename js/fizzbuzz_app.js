@@ -37,20 +37,25 @@
       $('#number').html(this.model.get('number'));
     },
     isFizz: function(){
-      var num = this.model.get('number');
-      alert("Fizzを押しました。現在の数字は" + num + "です。");
+      this.checkFizzBuzz('fizz');
     },
     isBuzz: function(){
-      var num = this.model.get('number');
-      alert("Buzzを押しました。現在の数字は" + num + "です。");
+      this.checkFizzBuzz('buzz');
     },
     isFizzbuzz: function(){
-      var num = this.model.get('number');
-      alert("Fizzbuzzを押しました。現在の数字は" + num + "です。");
+      this.checkFizzBuzz('fizzbuzz');
     },
     isOthers: function(){
+      this.checkFizzBuzz('others');
+    },
+    checkFizzBuzz: function(type){
       var num = this.model.get('number');
-      alert("Othersを押しました。現在の数字は" + num + "です。");
+      var answer = this.model.getFizzBuzzType();
+      if (type == answer) {
+        alert('正解！');
+      } else {
+        alert('ブッ、ブー！！！');
+      }
     }
   });
   var ResultView = Backbone.View.extend({
