@@ -53,10 +53,7 @@
       this.showAnswers();
     },
     events: {
-      "click #fizz": "checkFizzBuzz",
-      "click #buzz": "checkFizzBuzz",
-      "click #fizzbuzz": "checkFizzBuzz",
-      "click #others": "checkFizzBuzz",
+      "click .answer": "checkFizzBuzz",
       "click #regenerate": "regenerate"
     },
     showNum: function(){
@@ -70,7 +67,7 @@
       var type = e.target.id;
       var num = this.model.get('number');
       var answer = this.model.getFizzBuzzType();
-      var message = (type == answer) ? '正解' : 'ブッ、ブー！！！';
+      var message = (type == answer) ? '正解' : 'ブッ、ブー！！！正解は ' + answer + ' です。';
       var result = new Result({message: message});
       console.log(message);
       var resultView = new ResultView({model: result});
