@@ -93,9 +93,11 @@
       if(type == answer) {
         message = '正解（応答時間：' + this.model.responseTime()/1000 + '秒）';
         this.model.set('consecutiveCorrectAnswers', this.model.get('consecutiveCorrectAnswers') + 1 );
+        new Audio("sound/OK.wav").play();
       } else {
         message = 'ブッ、ブー！！！正解は ' + answer + ' です。';
         this.model.set('consecutiveCorrectAnswers', 0);
+        new Audio("sound/NG.wav").play();
       }
       var result = new Result({message: message});
       var resultView = new ResultView({model: result});
